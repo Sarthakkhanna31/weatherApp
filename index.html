@@ -12,76 +12,128 @@
 </head>
 <body>
     <div class="wrapper">
+        <div class="floating-elements">
+            <div class="cloud-1"></div>
+            <div class="cloud-2"></div>
+            <div class="cloud-3"></div>
+        </div>
+        
         <h1 class="heading">Weather</h1>
+        
         <div class="tab-container">
-            <p class="tab" data-userWeather>Your Weather</p>
+            <p class="tab current-tab" data-userWeather>Your Weather</p>
             <p class="tab" data-searchWeather>Search Weather</p>
         </div>
+        
         <div class="weather-container">
             <!-- grant location -->
-            <div class="sub-container grant-location-container">
-                <img src="./Assets/location.png" width="80" height="80" loading="lazy">
-                <p>Grant Location Access</p>
-                <p>Allow Access to get weather Information</p>
-                <button class="btn" data-grantAccess>Grant Access</button>
+            <div class="sub-container grant-location-container active">
+                <div class="location-icon">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p class="grant-title">Grant Location Access</p>
+                <p class="grant-subtitle">Allow Access to get weather Information</p>
+                <button class="btn pulse-btn" data-grantAccess>
+                    <span>Grant Access</span>
+                </button>
             </div>
+            
             <!-- search form -->
             <form class="form-container" data-searchForm>
-                <input placeholder="Search for City..." data-searchInput>
-                <button class="btn" type="submit">
-                    <img src="./Assets/search.png"  width="20" height="20" loading="lazy">
+                <div class="search-input-container">
+                    <input placeholder="Search for City..." data-searchInput>
+                    <div class="input-focus-effect"></div>
+                </div>
+                <button class="btn search-btn" type="submit">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </button>
-
             </form>
+            
             <!-- loading container -->
             <div class="sub-container loading-container">
-                <img src="./assets/loading.gif" width="150" height="150">
-                <p>Loading</p>
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+                <p class="loading-text">Loading</p>
             </div>
+            
             <!-- show weather info -->
             <div class="sub-container user-info-container">
-                <!-- citynamne and flag -->
+                <!-- city name and flag -->
                 <div class="name">
                     <p data-cityName></p>
                     <img data-countryIcon>
                 </div>
+                
                 <!-- weather desc -->
-                <p data-weatherDesc></p>
-                <!-- weathericon -->
-                <img data-weatherIcon>
+                <p class="weather-desc" data-weatherDesc></p>
+                
+                <!-- weather icon -->
+                <div class="weather-icon-container">
+                    <img data-weatherIcon>
+                </div>
+                
                 <!-- temp -->
-                <p data-temp></p>
+                <p class="temperature" data-temp></p>
+                
                 <!-- 3 cards -->
                 <div class="parameter-container">
                     <!-- card 1 -->
-                    <div class="parameter">
-                        <img src="./Assets/wind.png" >
-                        <p>windspeed</p>
-                        <p data-windspeed></p>
+                    <div class="parameter wind-card">
+                        <div class="parameter-icon">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.7 7.7a2.5 2.5 0 111.8 4.3H2m7.6-8a2.5 2.5 0 114.4 4.3H2m4 8a2.5 2.5 0 111.8 4.3H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p class="parameter-label">windspeed</p>
+                        <p class="parameter-value" data-windspeed></p>
                     </div>
-                    <!--card 2-->
-                    <div class="parameter">
-                        <img src="./Assets/humidity.png" >
-                        <p>humidity</p>
-                        <p data-humidity></p>
+                    
+                    <!-- card 2 -->
+                    <div class="parameter humidity-card">
+                        <div class="parameter-icon">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p class="parameter-label">humidity</p>
+                        <p class="parameter-value" data-humidity></p>
                     </div>
-
-                    <!--card 3-->
-                    <div class="parameter">
-                        <img src="./Assets/cloud.png" >
-                        <p>Clouds</p>
-                        <p data-cloudiness></p>
+                    
+                    <!-- card 3 -->
+                    <div class="parameter cloud-card">
+                        <div class="parameter-icon">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p class="parameter-label">Clouds</p>
+                        <p class="parameter-value" data-cloudiness></p>
                     </div>
-
                 </div>
             </div>
-            <!--error-container-->
+            
+            <!-- error container -->
             <div class="err-container">
-                <img class="err" src="./Assets/not-found.png"></img>
+                <div class="error-animation">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                        <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <p class="error-text">City not found!</p>
+                <p class="error-subtitle">Please try searching for another city</p>
             </div>
         </div>
-
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
